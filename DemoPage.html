@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML · CSS · JavaScript 학습장</title>
+  <style>
+    :root {
+      --background: #f4f7fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #62708a;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #f59e0b;
+      --border: #dbe3f0;
+      --shadow: 0 16px 40px rgba(31, 48, 82, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      color: white;
+      background: linear-gradient(135deg, #172554, #2563eb 60%, #38bdf8);
+    }
+
+    nav,
+    .hero,
+    main,
+    footer {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 42px;
+      align-items: center;
+      padding: 72px 0 88px;
+    }
+
+    .eyebrow {
+      color: #bae6fd;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #dbeafe;
+      font-size: 1.1rem;
+      max-width: 620px;
+    }
+
+    .code-window {
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.5);
+      box-shadow: var(--shadow);
+      font-family: Consolas, monospace;
+      color: #dbeafe;
+    }
+
+    .code-window span {
+      color: #fcd34d;
+    }
+
+    main {
+      padding: 64px 0;
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .section-heading p,
+    .card p,
+    .tip {
+      color: var(--muted);
+    }
+
+    .concept-grid,
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card,
+    .playground {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card .number {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      color: white;
+      background: var(--primary);
+      font-weight: 700;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: #92400e;
+      background: #fef3c7;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .playground {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+
+    .control-group {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    label {
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    button {
+      font: inherit;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: white;
+    }
+
+    button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 8px;
+      color: white;
+      background: var(--primary);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+    }
+
+    .preview {
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+      padding: 24px;
+      border-radius: 10px;
+      background: #eaf2ff;
+      text-align: center;
+    }
+
+    #previewTitle {
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .counter strong {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    footer {
+      padding: 28px 0 48px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      nav,
+      .hero,
+      main,
+      footer {
+        width: min(100% - 28px, 620px);
+      }
+
+      nav a {
+        margin-left: 8px;
+        font-size: 0.82rem;
+      }
+
+      .hero,
+      .playground {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 50px 0 64px;
+      }
+
+      .concept-grid,
+      .practice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="주요 메뉴">
+      <div class="logo">WEB LAB</div>
+      <div>
+        <a href="#concepts">개념</a>
+        <a href="#practice">실습</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Start with the basics</div>
+        <h1>웹의 세 가지 언어를 한 번에 익혀요.</h1>
+        <p>HTML로 구조를 만들고, CSS로 꾸미고, JavaScript로 움직임을 더합니다. 아래 실습 화면의 값을 바꿔 보세요.</p>
+      </div>
+      <div class="code-window" aria-label="웹 개발 코드 예시">
+        <div><span>&lt;h1&gt;</span> 구조 <span>&lt;/h1&gt;</span></div>
+        <div><span>.style</span> { color: blue; }</div>
+        <div><span>button.onclick</span> = 실행;</div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="concepts">
+      <div class="section-heading">
+        <span class="tag">핵심 개념</span>
+        <h2>역할은 다르지만 함께 작동합니다.</h2>
+        <p>브라우저는 세 언어를 해석하여 우리가 보는 웹페이지를 만듭니다.</p>
+      </div>
+
+      <div class="concept-grid">
+        <article class="card">
+          <div class="number">1</div>
+          <h3>HTML: 구조</h3>
+          <p>제목, 문단, 이미지, 버튼처럼 페이지에 들어갈 재료와 의미를 정합니다.</p>
+          <code>&lt;button&gt;클릭&lt;/button&gt;</code>
+        </article>
+        <article class="card">
+          <div class="number">2</div>
+          <h3>CSS: 표현</h3>
+          <p>색상, 여백, 글꼴, 배치, 화면 크기에 따른 반응형 디자인을 담당합니다.</p>
+          <code>button { color: white; }</code>
+        </article>
+        <article class="card">
+          <div class="number">3</div>
+          <h3>JavaScript: 동작</h3>
+          <p>클릭, 입력, 계산, 데이터 변경처럼 사용자와 상호작용하는 기능을 만듭니다.</p>
+          <code>button.addEventListener(...)</code>
+        </article>
+      </div>
+    </section>
+
+    <section id="practice" style="margin-top: 76px;">
+      <div class="section-heading">
+        <span class="tag">직접 실습</span>
+        <h2>나만의 카드 만들기</h2>
+        <p>입력값이 바뀌면 JavaScript가 미리보기 화면의 HTML을 변경합니다.</p>
+      </div>
+
+      <div class="playground">
+        <div class="control-group">
+          <label for="titleInput">카드 제목</label>
+          <input id="titleInput" type="text" value="오늘의 학습" maxlength="30">
+
+          <label for="colorSelect">제목 색상</label>
+          <select id="colorSelect">
+            <option value="#2563eb">파랑</option>
+            <option value="#db2777">분홍</option>
+            <option value="#15803d">초록</option>
+            <option value="#c2410c">주황</option>
+          </select>
+
+          <button id="updateButton" type="button">미리보기 업데이트</button>
+          <p class="tip">Tip: 개발자 도구(F12)의 Console에서 JavaScript 결과도 확인해 보세요.</p>
+        </div>
+
+        <div class="preview" id="previewBox">
+          <div>
+            <h3 id="previewTitle">오늘의 학습</h3>
+            <p>작은 변경도 페이지의 모습을 바꿉니다.</p>
+            <div class="counter">
+              <span>업데이트 횟수</span>
+              <strong id="count">0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>HTML + CSS + JavaScript로 만든 작은 학습장</p>
+  </footer>
+
+  <script>
+    const titleInput = document.querySelector('#titleInput');
+    const colorSelect = document.querySelector('#colorSelect');
+    const updateButton = document.querySelector('#updateButton');
+    const previewTitle = document.querySelector('#previewTitle');
+    const count = document.querySelector('#count');
+
+    let updateCount = 0;
+
+    updateButton.addEventListener('click', () => {
+      const title = titleInput.value.trim() || '제목을 입력해 주세요';
+      previewTitle.textContent = title;
+      previewTitle.style.color = colorSelect.value;
+      updateCount += 1;
+      count.textContent = updateCount;
+    });
+  </script>
+</body>
+</html>
